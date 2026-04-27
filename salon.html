@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon — Radhika Thakkar Unisex Salon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-pale: #F5E6C0;
+      --gold-dark: #8B6914;
+      --black: #1A1410;
+      --black-light: #2D251F;
+      --cream: #FAF6EE;
+      --beige: #F2EBD9;
+      --white: #FFFFFF;
+      --text: #1A1410;
+      --text-muted: #4A3A2A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .luxury-font { font-family: 'Playfair Display', serif; }
+    .script { font-family: 'Great Vibes', cursive; }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 6vw; background: rgba(26, 20, 16, 0.95);
+      backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .logo { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--gold-light); text-decoration: none; }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--white); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: white !important; padding: 12px 25px; border-radius: 25px; font-weight: 600; }
+
+    /* ─── HERO ─── */
+    .salon-hero {
+      height: 100vh; position: relative;
+      display: flex; align-items: center; padding: 0 6vw;
+      background: url('assets/salon_hero.jpg') no-repeat center center/cover;
+    }
+    .salon-hero::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    }
+    .hero-content { position: relative; z-index: 10; max-width: 700px; color: white; }
+    .hero-tag { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 15px; display: block; font-weight: 600; }
+    .hero-content h1 { font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.1; margin-bottom: 25px; font-weight: 500; }
+    .hero-content p { font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 40px; font-weight: 300; letter-spacing: 0.5px; }
+    .hero-btns { display: flex; gap: 20px; }
+    .btn { padding: 18px 40px; border-radius: 35px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.4s; font-weight: 600; display: inline-block; }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: white; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(201,168,76,0.3); }
+    .btn-outline { border: 1px solid var(--gold); color: var(--gold-light); }
+    .btn-outline:hover { background: var(--gold); color: white; }
+
+    /* ─── SERVICES ─── */
+    section { padding: 120px 6vw; }
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; font-weight: 400; }
+    .gold-divider { width: 100px; height: 1px; background: var(--gold); margin: 0 auto; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
+    }
+    .service-card {
+      background: white; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);
+      transition: 0.4s; display: flex; flex-direction: column;
+    }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
+    .service-img { height: 300px; overflow: hidden; position: relative; }
+    .service-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+    .service-card:hover .service-img img { transform: scale(1.1); }
+    .service-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+    .service-info h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 500; }
+    .service-info p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; }
+    .service-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--beige); }
+    .price-tag { font-weight: 600; color: var(--gold-dark); font-size: 1.1rem; }
+    .book-btn { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--black); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+    /* ─── WHY CHOOSE US ─── */
+    .why-section { background: var(--black); color: white; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+    .why-card {
+      background: var(--black-light); padding: 50px 35px; border-radius: 20px;
+      text-align: center; border: 1px solid rgba(201,168,76,0.1); transition: 0.4s;
+    }
+    .why-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+    .why-card h3 { font-size: 1.4rem; color: var(--gold-light); margin-bottom: 15px; font-weight: 400; }
+    .why-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: 300; }
+
+    /* ─── REVIEWS ─── */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .video-card { border-radius: 20px; overflow: hidden; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background: #000; }
+    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ─── GOOGLE REVIEWS ─── */
+    .google-section { background: var(--cream); }
+    .rating-summary { text-align: center; margin-bottom: 50px; }
+    .rating-stars { color: #FFD700; font-size: 1.5rem; margin-bottom: 5px; }
+    .rating-val { font-size: 2.5rem; font-weight: 600; display: block; }
+    .google-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .google-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .client-name { font-weight: 600; font-size: 1rem; margin-bottom: 10px; display: block; }
+    .review-text { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
+
+    /* ─── LOCATION ─── */
+    .location-wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: center; }
+    .loc-info h2 { font-size: 2.8rem; margin-bottom: 30px; font-weight: 400; }
+    .loc-details { margin-bottom: 40px; }
+    .loc-item { margin-bottom: 25px; }
+    .loc-item strong { display: block; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: var(--gold-dark); margin-bottom: 5px; }
+    .loc-item p { font-size: 1.05rem; }
+    .map-box { height: 450px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid var(--beige); }
+    .map-box iframe { width: 100%; height: 100%; border: none; }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta { text-align: center; background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%); color: white; padding: 140px 6vw; }
+    .final-cta h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 30px; font-weight: 300; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 15px 5vw; }
+      .nav-links { display: none; }
+      .salon-hero { text-align: center; justify-content: center; padding-top: 80px; }
+      .hero-content h1 { font-size: 3.5rem; }
+      .hero-btns { flex-direction: column; width: 100%; }
+      .btn { width: 100%; }
+      .location-wrap { grid-template-columns: 1fr; }
+      .map-box { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Radhika Thakkar</a>
+    <div class="nav-links">
+      <a href="index.html#founder">About</a>
+      <a href="index.html#services">Makeup Services</a>
+      <a href="salon.html">Unisex Salon</a>
+      <a href="academy.html">Academy</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20a%20salon%20service" class="nav-cta">Book Appointment</a>
+    </div>
+  </nav>
+
+  <header class="salon-hero">
+    <div class="hero-content">
+      <span class="hero-tag">Luxury Salon Experience</span>
+      <h1>Experience Beauty & Elegance</h1>
+      <p>Indulge in premium beauty services crafted for perfection, confidence, and luxury.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn btn-gold">Book Appointment</a>
+        <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20a%20salon%20service" class="btn btn-outline">WhatsApp Inquiry</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="services">
+    <div class="section-header">
+      <h2 class="section-title">Our Premium Services</h2>
+      <div class="gold-divider"></div>
+    </div>
+    
+    <div class="services-grid">
+      <!-- 1 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/hair_styling_course_1777287999873.png" alt="Haircut"></div>
+        <div class="service-info">
+          <h3>Haircut & Styling</h3>
+          <p>Expert cuts and transformations tailored to your face shape and personality.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹800</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Haircut%20Service" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/hair_styling_1777287880618.png" alt="Hair Spa"></div>
+        <div class="service-info">
+          <h3>Hair Spa & Treatment</h3>
+          <p>Deep conditioning treatments to restore shine, health, and vitality to your hair.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹1,500</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Hair%20Spa" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/airbrush_bridal_makeup_1777287552055.png" alt="Hair Color"></div>
+        <div class="service-info">
+          <h3>Hair Coloring</h3>
+          <p>Global color, highlights, or balayage using the finest international products.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹3,500</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Hair%20Coloring" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/hd_bridal_makeup_1777287534571.png" alt="Bridal"></div>
+        <div class="service-info">
+          <h3>Bridal Makeup</h3>
+          <p>Bespoke luxury bridal transformations for your most special day.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹15,000</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Bridal%20Makeup" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/reception_sangeet_makeup_1777287568418.png" alt="Party Makeup"></div>
+        <div class="service-info">
+          <h3>Party Makeup</h3>
+          <p>Look stunning for any occasion with our professional party makeup services.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹5,000</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Party%20Makeup" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/skin_treatments_1777287900048.png" alt="Facial"></div>
+        <div class="service-info">
+          <h3>Skin Treatment / Facial</h3>
+          <p>Revitalize your skin with our luxury facials and specialized skin treatments.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹2,500</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Skin%20Treatment" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 7 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/nail_art_1777287933217.png" alt="Nails"></div>
+        <div class="service-info">
+          <h3>Manicure & Pedicure</h3>
+          <p>Indulge in relaxing hand and feet care with our premium spa manicures.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹1,200</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Manicure%20Pedicure" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- 8 -->
+      <div class="service-card">
+        <div class="service-img"><img src="assets/groom_makeup_1777287951602.png" alt="Groom"></div>
+        <div class="service-info">
+          <h3>Groom Services (Men)</h3>
+          <p>Dedicated grooming services for men, ensuring a sharp and polished look.</p>
+          <div class="service-footer">
+            <span class="price-tag">Starting from ₹1,000</span>
+            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Groom%20Services" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose Radhika Thakkar</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Luxury Experience</h3>
+        <p>Step into a world of elegance with our world-class salon interiors and ambiance.</p>
+      </div>
+      <div class="why-card">
+        <h3>Expert Stylists</h3>
+        <p>Our team consists of highly trained professionals with years of industry experience.</p>
+      </div>
+      <div class="why-card">
+        <h3>Premium Products</h3>
+        <p>We use only the finest international brands to ensure the best results for your beauty.</p>
+      </div>
+      <div class="why-card">
+        <h3>Personalized Service</h3>
+        <p>Every service is tailored to your unique needs, ensuring total satisfaction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-header">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/rN15GHxzYEA" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/3hQuN_7ulw4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/1rGN1jwKCqA" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="google-section">
+    <div class="section-header">
+      <h2 class="section-title">Trusted by Our Clients</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="rating-summary">
+      <div class="rating-stars">★★★★★</div>
+      <span class="rating-val">4.8+ Rating</span>
+      <p>Based on 100+ Reviews on Google</p>
+    </div>
+    <div class="google-grid">
+      <div class="google-card">
+        <span class="client-name">Priya Mehta</span>
+        <p class="review-text">"Best salon experience in the city! The staff is so professional and the ambiance is truly luxury."</p>
+      </div>
+      <div class="google-card">
+        <span class="client-name">Rahul Sharma</span>
+        <p class="review-text">"Got my haircut and styling done here. Excellent service and very sharp results. Highly recommended."</p>
+      </div>
+      <div class="google-card">
+        <span class="client-name">Sneha Kapoor</span>
+        <p class="review-text">"The facial treatment was so relaxing. My skin feels rejuvenated. Definitely coming back!"</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="location-wrap">
+      <div class="loc-info">
+        <h2>Visit Our Salon</h2>
+        <div class="loc-details">
+          <div class="loc-item">
+            <strong>Address</strong>
+            <p>Shop No. 1, Ground Floor, Sai Villa,<br>Opp. MCA, Kandivali West, Mumbai - 400067</p>
+          </div>
+          <div class="loc-item">
+            <strong>Phone</strong>
+            <p>+91 84528 46772</p>
+          </div>
+          <div class="loc-item">
+            <strong>Working Hours</strong>
+            <p>Mon - Sun: 10:00 AM - 08:30 PM</p>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/ZuuhoPtjDUsP3Mxh7" target="_blank" class="btn btn-gold">Get Directions</a>
+      </div>
+      <div class="map-box">
+        <!-- Placeholder for Google Maps -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.741099!3d19.0821978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="final-cta">
+    <span class="hero-tag" style="color: var(--gold-light);">Book Your Appointment Today</span>
+    <h2>Ready to Experience Luxury?</h2>
+    <div class="hero-btns" style="justify-content: center;">
+      <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20a%20salon%20service" class="btn btn-gold">Book Now</a>
+      <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20a%20salon%20service" class="btn btn-outline" style="color: white; border-color: white;">WhatsApp Now</a>
+    </div>
+  </footer>
+
+</body>
+</html>

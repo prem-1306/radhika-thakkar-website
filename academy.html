@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academy — Radhika Thakkar Makeovers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-pale: #F5E6C0;
+      --gold-dark: #8B6914;
+      --cream: #FAF6EE;
+      --beige: #F2EBD9;
+      --white: #FFFFFF;
+      --charcoal: #1A1410;
+      --brown: #4A3520;
+      --text: #1A1410;
+      --text-muted: #4A3A2A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .script { font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 6vw; background: rgba(26, 20, 16, 0.95);
+      backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .logo { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--gold-light); text-decoration: none; }
+    .nav-links { display: flex; gap: 40px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--white); font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: white !important; padding: 12px 25px; border-radius: 25px; transition: 0.3s; font-weight: 600; }
+    .nav-cta:hover { background: var(--gold-dark); transform: translateY(-2px); }
+
+    /* ─── HERO ─── */
+    .academy-hero {
+      min-height: 90vh; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center;
+      padding: 0 6vw; background: linear-gradient(135deg, var(--white) 0%, var(--beige) 100%);
+      padding-top: 100px;
+      gap: 40px;
+    }
+    .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; font-weight: 300; }
+    .hero-content h2 { font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--gold-dark); margin-bottom: 20px; font-weight: 400; }
+    .hero-content p { font-size: 1.15rem; color: var(--text-muted); max-width: 550px; margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; }
+    .btn { padding: 16px 35px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; display: inline-block; text-align: center; font-weight: 500; }
+    .btn-gold { background: linear-gradient(to right, var(--gold-dark), var(--gold)); color: white; box-shadow: 0 10px 20px rgba(139,105,20,0.2); border: none; }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(139,105,20,0.3); }
+    .btn-outline { border: 1px solid var(--gold); color: var(--gold-dark); background: transparent; }
+    .btn-outline:hover { background: var(--gold); color: white; transform: translateY(-3px); }
+
+    /* ─── CERTIFICATE IMAGE ─── */
+    .cert-img-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      transform: rotate(2deg);
+      transition: 0.5s;
+    }
+    .cert-img-container:hover { transform: rotate(0deg) scale(1.02); }
+    .cert-img-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      border: 1px solid var(--gold-pale);
+    }
+
+    /* ─── COURSES ─── */
+    section { padding: 120px 6vw; }
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-label { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 15px; display: block; font-weight: 600; }
+    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 20px; }
+    .gold-line { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 30px; }
+
+    .course-card {
+      background: white; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.05); border: 1px solid rgba(201,168,76,0.1);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 50px; align-items: center;
+      margin-bottom: 80px;
+    }
+    .course-card.reverse { direction: rtl; }
+    .course-card.reverse .course-info { direction: ltr; }
+
+    .slider-container { width: 100%; position: relative; overflow: hidden; border-radius: 18px; }
+    .image-slider {
+      display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .image-slider::-webkit-scrollbar { display: none; }
+    .image-slider img {
+      flex: 0 0 100%; scroll-snap-align: start;
+      height: 450px; object-fit: cover;
+    }
+
+    .course-name { font-size: 2.5rem; margin-bottom: 15px; font-weight: 400; color: var(--charcoal); }
+    .course-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+    .course-meta { display: flex; gap: 30px; margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--beige); }
+    .meta-item span { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-dark); font-weight: 600; }
+    .meta-item strong { font-size: 1rem; color: var(--charcoal); font-weight: 500; }
+
+    .course-learn h4 { font-family: 'Jost', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--charcoal); font-weight: 600; }
+    .course-learn ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 40px; }
+    .course-learn li { font-size: 0.95rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+    .course-learn li::before { content: '✓'; color: var(--gold); font-weight: bold; }
+
+    .price-box { margin-bottom: 30px; background: var(--cream); padding: 20px; border-radius: 12px; border: 1px solid var(--gold-pale); }
+    .price-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .price-val { font-size: 1.8rem; color: var(--gold-dark); font-weight: 600; display: block; }
+    .price-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 5px; display: block; }
+
+    /* ─── WHY CHOOSE US ─── */
+    .why-bg { background: var(--beige); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .why-card { background: white; padding: 40px 30px; border-radius: 20px; text-align: center; transition: 0.4s; border: 1px solid rgba(201,168,76,0.1); }
+    .why-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .why-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--charcoal); }
+    .why-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* ─── REVIEWS ─── */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); background: #000; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta { text-align: center; background: linear-gradient(135deg, #1A1410 0%, #2D251F 100%); color: white; padding: 120px 6vw; }
+    .final-cta h2 { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 30px; font-weight: 300; }
+    .final-cta .btn { margin: 10px; min-width: 200px; }
+
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 15px 5vw; }
+      .nav-links { display: none; }
+      .academy-hero { grid-template-columns: 1fr; height: auto; padding-top: 140px; text-align: center; padding-bottom: 60px; }
+      .hero-content { display: flex; flex-direction: column; align-items: center; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-btns { justify-content: center; }
+      .cert-img-container { transform: rotate(0); margin-top: 40px; padding: 0; }
+      .course-card, .course-card.reverse { grid-template-columns: 1fr; padding: 25px; gap: 40px; }
+      .image-slider img { height: 320px; }
+      .btn { width: 100%; }
+      .hero-btns { flex-direction: column; width: 100%; max-width: 400px; }
+      section { padding: 80px 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Radhika Thakkar</a>
+    <div class="nav-links">
+      <a href="index.html#founder">About</a>
+      <a href="index.html#services">Makeup Services</a>
+      <a href="salon.html">Unisex Salon</a>
+      <a href="academy.html">Academy</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Academy" class="nav-cta">Enroll Now</a>
+    </div>
+  </nav>
+
+  <header class="academy-hero">
+    <div class="hero-content">
+      <span class="section-label">Enroll in Excellence</span>
+      <h1>Become a Professional Makeup Artist</h1>
+      <h2>Learn directly from Radhika Thakkar</h2>
+      <p>Hands-on training, real bridal experience, and industry-level skills to launch your career in luxury beauty.</p>
+      <div class="hero-btns">
+        <a href="#courses" class="btn btn-gold">Explore Courses</a>
+        <a href="https://wa.me/918452846772?text=Hi%20Radhika,%20I'm%20interested%20in%20joining%20your%20Academy." class="btn btn-outline">WhatsApp Inquiry</a>
+      </div>
+    </div>
+    
+    <!-- Premium Certificate Image -->
+    <div class="cert-img-container">
+      <img src="assets/academy_certificate.jpg" alt="Radhika Thakkar Academy Certificate">
+    </div>
+  </header>
+
+  <section id="courses">
+    <div class="section-header">
+      <span class="section-label">Master the Art</span>
+      <h2 class="section-title">Professional Training Programs</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <!-- Course 1: Professional Master Course -->
+    <div class="course-card">
+      <div class="slider-container">
+        <div class="image-slider">
+          <img src="assets/hd_bridal_makeup_1777287534571.png" alt="Bridal Training">
+          <img src="assets/airbrush_bridal_makeup_1777287552055.png" alt="Practice Session">
+          <img src="assets/reception_sangeet_makeup_1777287568418.png" alt="Makeup Look">
+        </div>
+      </div>
+      <div class="course-info">
+        <h3 class="course-name">Professional Master Course</h3>
+        <p class="course-desc">Our most comprehensive program designed to take you from a beginner to a high-earning celebrity makeup artist.</p>
+        <div class="course-meta">
+          <div class="meta-item"><span>Duration</span><strong>Flexible / Contact us</strong></div>
+          <div class="meta-item"><span>Mode</span><strong>Offline</strong></div>
+          <div class="meta-item"><span>Level</span><strong>All Levels</strong></div>
+        </div>
+        <div class="course-learn">
+          <h4>Curriculum Highlights</h4>
+          <ul>
+            <li>Advanced Skin Prep</li>
+            <li>Color Theory & Correction</li>
+            <li>Signature Bridal Looks</li>
+            <li>Portfolio Building</li>
+            <li>Business Marketing</li>
+            <li>Live Model Practice</li>
+          </ul>
+        </div>
+        <div class="price-box">
+          <span class="price-label">Fees</span>
+          <span class="price-val">Starting from ₹XX,XXX</span>
+          <span class="price-note">Final pricing shared on WhatsApp</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Professional%20Master%20Course" class="btn btn-gold">Enroll Now</a>
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Professional%20Master%20Course" class="btn btn-outline">Get Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 2: Advanced Bridal Course -->
+    <div class="course-card reverse">
+      <div class="slider-container">
+        <div class="image-slider">
+          <img src="assets/advanced_bridal_course_1777287983148.png" alt="Advanced Bridal">
+          <img src="assets/pre_wedding_shoot_makeup_1777287619330.png" alt="Look Creation">
+        </div>
+      </div>
+      <div class="course-info">
+        <h3 class="course-name">Advanced Bridal Course</h3>
+        <p class="course-desc">Master the nuances of luxury bridal artistry. Focus on creating long-lasting, HD, and waterproof looks for every skin type.</p>
+        <div class="course-meta">
+          <div class="meta-item"><span>Duration</span><strong>Flexible / Contact us</strong></div>
+          <div class="meta-item"><span>Mode</span><strong>Hands-on</strong></div>
+          <div class="meta-item"><span>Level</span><strong>Intermediate</strong></div>
+        </div>
+        <div class="course-learn">
+          <h4>Curriculum Highlights</h4>
+          <ul>
+            <li>HD & 4K Base Secrets</li>
+            <li>Saree & Dupatta Draping</li>
+            <li>Product Knowledge</li>
+            <li>Bridal Hair Basics</li>
+            <li>Lighting & Photography</li>
+            <li>Client Consultations</li>
+          </ul>
+        </div>
+        <div class="price-box">
+          <span class="price-label">Fees</span>
+          <span class="price-val">Starting from ₹XX,XXX</span>
+          <span class="price-note">Final pricing shared on WhatsApp</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Advanced%20Bridal%20Course" class="btn btn-gold">Enroll Now</a>
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Advanced%20Bridal%20Course" class="btn btn-outline">Get Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 3: Basic Makeup Course -->
+    <div class="course-card">
+      <div class="slider-container">
+        <div class="image-slider">
+          <img src="assets/basic_makeup_course_1777287967495.png" alt="Basic Makeup">
+        </div>
+      </div>
+      <div class="course-info">
+        <h3 class="course-name">Basic Makeup Course</h3>
+        <p class="course-desc">The perfect foundation for beginners. Learn the essentials of makeup application, tools, and skin types.</p>
+        <div class="course-meta">
+          <div class="meta-item"><span>Duration</span><strong>Flexible / Contact us</strong></div>
+          <div class="meta-item"><span>Mode</span><strong>Hands-on</strong></div>
+          <div class="meta-item"><span>Level</span><strong>Beginner</strong></div>
+        </div>
+        <div class="course-learn">
+          <h4>Curriculum Highlights</h4>
+          <ul>
+            <li>Brush & Tool Knowledge</li>
+            <li>Day to Night Transition</li>
+            <li>Self-Makeup Secrets</li>
+            <li>Eye Liner Techniques</li>
+            <li>Base Perfection</li>
+            <li>Product Selection</li>
+          </ul>
+        </div>
+        <div class="price-box">
+          <span class="price-label">Fees</span>
+          <span class="price-val">Starting from ₹XX,XXX</span>
+          <span class="price-note">Final pricing shared on WhatsApp</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Basic%20Makeup%20Course" class="btn btn-gold">Enroll Now</a>
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Basic%20Makeup%20Course" class="btn btn-outline">Get Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 4: Hair Styling Course -->
+    <div class="course-card reverse">
+      <div class="slider-container">
+        <div class="image-slider">
+          <img src="assets/hair_styling_course_1777287999873.png" alt="Hair Styling">
+          <img src="assets/hair_styling_1777287880618.png" alt="Hair Tutorial">
+        </div>
+      </div>
+      <div class="course-info">
+        <h3 class="course-name">Hair Styling Course</h3>
+        <p class="course-desc">Master everything from basic braids to intricate bridal buns and contemporary messy styles.</p>
+        <div class="course-meta">
+          <div class="meta-item"><span>Duration</span><strong>Flexible / Contact us</strong></div>
+          <div class="meta-item"><span>Mode</span><strong>Hands-on</strong></div>
+          <div class="meta-item"><span>Level</span><strong>Beginner</strong></div>
+        </div>
+        <div class="course-learn">
+          <h4>Curriculum Highlights</h4>
+          <ul>
+            <li>Tools & Heated Equipment</li>
+            <li>Traditional Indian Buns</li>
+            <li>Modern Messy Styles</li>
+            <li>Braiding Variations</li>
+            <li>Accessory Placement</li>
+            <li>Texture Creation</li>
+          </ul>
+        </div>
+        <div class="price-box">
+          <span class="price-label">Fees</span>
+          <span class="price-val">Starting from ₹XX,XXX</span>
+          <span class="price-note">Final pricing shared on WhatsApp</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Hair%20Styling%20Course" class="btn btn-gold">Enroll Now</a>
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Hair%20Styling%20Course" class="btn btn-outline">Get Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 5: Airbrush Makeup Course -->
+    <div class="course-card">
+      <div class="slider-container">
+        <div class="image-slider">
+          <img src="assets/airbrush_bridal_makeup_1777287552055.png" alt="Airbrush Course">
+        </div>
+      </div>
+      <div class="course-info">
+        <h3 class="course-name">Airbrush Makeup Course</h3>
+        <p class="course-desc">Master the elite technique of Airbrushing for that flawless, porcelain finish required for high-end photography.</p>
+        <div class="course-meta">
+          <div class="meta-item"><span>Duration</span><strong>Flexible / Contact us</strong></div>
+          <div class="meta-item"><span>Mode</span><strong>Technical</strong></div>
+          <div class="meta-item"><span>Level</span><strong>Advanced</strong></div>
+        </div>
+        <div class="course-learn">
+          <h4>Curriculum Highlights</h4>
+          <ul>
+            <li>Airbrush Machine Care</li>
+            <li>Flawless Base Application</li>
+            <li>Contouring & Highlighting</li>
+            <li>Waterproof Secrets</li>
+            <li>Equipment Sourcing</li>
+            <li>HD Photography Ready</li>
+          </ul>
+        </div>
+        <div class="price-box">
+          <span class="price-label">Fees</span>
+          <span class="price-val">Starting from ₹XX,XXX</span>
+          <span class="price-note">Final pricing shared on WhatsApp</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Airbrush%20Makeup%20Course" class="btn btn-gold">Enroll Now</a>
+          <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20Airbrush%20Makeup%20Course" class="btn btn-outline">Get Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-bg">
+    <div class="section-header">
+      <span class="section-label">The Advantage</span>
+      <h2 class="section-title">Why Choose Radhika Thakkar Academy</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Celebrity Mentorship</h3>
+        <p>Learn the secrets and techniques used on celebrity clients directly from Radhika Thakkar.</p>
+      </div>
+      <div class="why-card">
+        <h3>Real Bridal Exposure</h3>
+        <p>Get a chance to assist Radhika on real bridal bookings for practical on-field experience.</p>
+      </div>
+      <div class="why-card">
+        <h3>Premium Certification</h3>
+        <p>Receive an industry-recognized certification that validates your professional skills.</p>
+      </div>
+      <div class="why-card">
+        <h3>Career Support</h3>
+        <p>Dedicated support to help you find jobs or start your own successful freelance business.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-header">
+      <span class="section-label">Student Success</span>
+      <h2 class="section-title">Hear From Our Students</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/-bqMRFo4qUs" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/RKPKs6KAL-o" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/3Zj5MUnaOv4" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="final-cta">
+    <span class="section-label" style="color: var(--gold-light);">Your Future Starts Here</span>
+    <h2>Start Your Makeup Career Today</h2>
+    <div class="hero-btns">
+      <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20join%20the%20Academy" class="btn btn-gold">Apply Now</a>
+      <a href="https://wa.me/918452846772?text=Hi%20I%20have%20an%20inquiry%20regarding%20courses" class="btn btn-outline" style="color: white; border-color: white;">WhatsApp Inquiry</a>
+    </div>
+  </footer>
+
+</body>
+</html>
