@@ -191,6 +191,69 @@
       .map-box { height: 300px; }
       .loc-info h2 { font-size: 2.2rem; }
     }
+    /* ─── BOOKING MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 3000;
+      background: rgba(10,7,3,0.92);
+      display: none; align-items: center; justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--cream);
+      max-width: 540px; width: 100%;
+      padding: 50px 40px;
+      position: relative;
+      max-height: 90vh; overflow-y: auto;
+      border-radius: 20px;
+    }
+    .modal-close {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 1.4rem; cursor: pointer; color: var(--text-muted);
+      background: none; border: none; line-height: 1;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 400; margin-bottom: 6px; color: var(--black);
+    }
+    .modal-subtitle { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 14px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s;
+      border-radius: 8px;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .price-display {
+      background: var(--beige);
+      border-left: 3px solid var(--gold);
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-top: 8px;
+      display: none;
+    }
+    .form-btns { display: flex; gap: 12px; margin-top: 24px; }
+    .whatsapp-btn {
+      flex: 1; background: #25D366; color: white;
+      border: none; padding: 16px; border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all 0.3s; text-decoration: none;
+    }
+    .whatsapp-btn:hover { background: #1fba59; }
   </style>
   <script>
     function toggleMenu() {
@@ -244,7 +307,7 @@
           <p>Expert cuts and transformations tailored to your face shape and personality.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹800</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Haircut%20Service" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Haircut & Styling'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -256,7 +319,7 @@
           <p>Deep conditioning treatments to restore shine, health, and vitality to your hair.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹1,500</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Hair%20Spa" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Hair Spa & Treatment'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -268,7 +331,7 @@
           <p>Global color, highlights, or balayage using the finest international products.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹3,500</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Hair%20Coloring" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Hair Coloring'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -280,7 +343,7 @@
           <p>Bespoke luxury bridal transformations for your most special day.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹15,000</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Bridal%20Makeup" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Bridal Makeup'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -292,7 +355,7 @@
           <p>Look stunning for any occasion with our professional party makeup services.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹5,000</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Party%20Makeup" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Party Makeup'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -304,7 +367,7 @@
           <p>Revitalize your skin with our luxury facials and specialized skin treatments.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹2,500</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Skin%20Treatment" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Skin Treatment / Facial'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -316,7 +379,7 @@
           <p>Indulge in relaxing hand and feet care with our premium spa manicures.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹1,200</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Manicure%20Pedicure" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Manicure & Pedicure'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -328,7 +391,7 @@
           <p>Dedicated grooming services for men, ensuring a sharp and polished look.</p>
           <div class="service-footer">
             <span class="price-tag">Starting from ₹1,000</span>
-            <a href="https://wa.me/918452846772?text=Hi%20I%20want%20to%20book%20Groom%20Services" class="book-btn">Book Now</a>
+            <a href="#" class="book-btn" onclick="openModal('Groom Services'); return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -446,9 +509,96 @@
     </div>
   </footer>
 
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 class="modal-title">Book Your<br>Appointment</h2>
+    <p class="modal-subtitle">✦ Radhika Thakkar Salon ✦</p>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="clientName" placeholder="Your beautiful name">
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="clientPhone" placeholder="+91 XXXXX XXXXX">
+    </div>
+    <div class="form-group">
+      <label>Select Service</label>
+      <select id="serviceSelect" onchange="updatePrice()">
+        <option value="">— Choose a Service —</option>
+        <option value="Haircut & Styling|₹800+">Haircut & Styling</option>
+        <option value="Hair Spa & Treatment|₹1,500+">Hair Spa & Treatment</option>
+        <option value="Hair Coloring|₹3,500+">Hair Coloring</option>
+        <option value="Bridal Makeup|₹15,000+">Bridal Makeup</option>
+        <option value="Party Makeup|₹5,000+">Party Makeup</option>
+        <option value="Skin Treatment / Facial|₹2,500+">Skin Treatment / Facial</option>
+        <option value="Manicure & Pedicure|₹1,200+">Manicure & Pedicure</option>
+        <option value="Groom Services|₹1,000+">Groom Services</option>
+      </select>
+      <div class="price-display" id="priceDisplay"></div>
+    </div>
+    <div class="form-group">
+      <label>Preferred Date</label>
+      <input type="date" id="clientDate">
+    </div>
+    <div class="form-group">
+      <label>Message (Optional)</label>
+      <textarea id="clientMsg" placeholder="Tell us about your requirements..."></textarea>
+    </div>
+    <div class="form-btns">
+      <a href="#" class="whatsapp-btn" onclick="bookViaWhatsApp(); return false;">💬 Book via WhatsApp</a>
+    </div>
+  </div>
+</div>
+
   <script>
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function openModal(service) {
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (service) {
+        const sel = document.getElementById('serviceSelect');
+        for (let opt of sel.options) {
+          if (opt.value.startsWith(service)) {
+            sel.value = opt.value;
+            updatePrice();
+            break;
+          }
+        }
+      }
+    }
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    });
+
+    function updatePrice() {
+      const sel = document.getElementById('serviceSelect');
+      const pd = document.getElementById('priceDisplay');
+      if (sel.value) {
+        const parts = sel.value.split('|');
+        pd.style.display = 'block';
+        pd.textContent = '💰 Starting Price: ' + parts[1];
+      } else {
+        pd.style.display = 'none';
+      }
+    }
+
+    function bookViaWhatsApp() {
+      const name = document.getElementById('clientName').value || 'Client';
+      const phone = document.getElementById('clientPhone').value || '';
+      const service = document.getElementById('serviceSelect').value.split('|')[0] || 'General Inquiry';
+      const date = document.getElementById('clientDate').value || 'To be discussed';
+      const msg = document.getElementById('clientMsg').value || '';
+      const text = `Hello Radhika Thakkar Salon! 🌸\n\nI'd like to book an appointment:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n💄 Service: ${service}\n📅 Date: ${date}\n💬 Message: ${msg}\n\nThank you!`;
+      window.open('https://wa.me/918452846772?text=' + encodeURIComponent(text), '_blank');
     }
   </script>
 </body>
